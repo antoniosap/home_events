@@ -42,7 +42,7 @@ class HomeEvents(mqtt.Mqtt):
             # self.log(f"tc_ext_state_change: {self.tc_ext}")
             now = datetime.now()
             # tts @ home assistant
-            message = f"esterno {self.tc_ext} gradi"
+            message = f"{str(tc_ext_new).replace('.0', '')} gradi"
             payload = {"time": now.strftime(TIME_FORMAT),
                        "speech": {"entity_id": HA_MEDIA_PLAYER_ID, "language": 'it-IT', "message": message}}
             self.mqtt_publish(HA_TTS_SERVICE_TOPIC, json.dumps(payload))
