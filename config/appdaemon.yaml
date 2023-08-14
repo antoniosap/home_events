@@ -1,0 +1,44 @@
+logs:
+  main_log:
+    filename: ./logs/appdaemon.log
+  access_log:
+    filename: ./logs/access.log
+  error_log:
+    filename: ./logs/error.log
+  diag_log:
+    filename: ./logs/diag.log
+    log_generations: 3
+    log_size: 1024
+    format: "{asctime} {levelname:<8} {appname:<10}: {message}"
+  test_log:
+    name: TestLog
+    filename: ./logs/test.log
+appdaemon:
+  latitude: 52.379189
+  longitude: 4.899431
+  elevation: 2
+  time_zone: Europe/Rome
+  plugins:
+    HASS:
+      type: hass
+      ha_url: "http://192.168.147.21:8123"
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiOTM0OGYwYjc5MTE0NjI0YTY5NzIxNDIwOWM1OTNjNiIsImlhdCI6MTY5MTgyMTc2OSwiZXhwIjoyMDA3MTgxNzY5fQ.T2STxhY9iFEJGJ7zHBQZzCtBpZpkJuTOopUPQKTc2EM"
+    MQTT:
+     type: mqtt
+     namespace: mqtt
+     client_host: '192.168.147.1'
+     #
+     # https://github.com/joBr99/nspanel-lovelace-ui/issues/291
+     #
+     # And both are connecting with the client id AppDaemon,
+     # you can change this line if you like to have two AppDaemon instances
+     # connected to the same broker client_id: "appdaemon-xxxx"
+     #
+     client_id: "appdaemon-3502"
+     verbose: true
+http:
+  url: http://127.0.0.1:5050
+admin:
+api:
+hadashboard:
+  dash_url: http://10.0.0.13:5050

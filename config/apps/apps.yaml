@@ -1,0 +1,4 @@
+---
+home_events:
+  module: home_events
+  class: HomeEvents
